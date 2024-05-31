@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const dbConnection = async () => {
     try{
-        const dbConnection = await mongoose.connect(process.env.MONGO_URL) 
+        const dbConnection = await mongoose.connect(process.env.MONGODB_URL);
 
         console.log("DB Connected Successfully!");
     }
@@ -10,3 +10,5 @@ const dbConnection = async () => {
         console.log("DB Eroor: " + error);
     }
 }
+
+export default dbConnection;
