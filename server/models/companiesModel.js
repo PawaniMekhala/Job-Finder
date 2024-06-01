@@ -38,24 +38,27 @@ const companySchema = new mongoose.Schema({
     
 });
 
+// middlewares
+
 companySchema.pre("save", async function(){
 
     if(!this.isModified) return;
 
-    const salt = await bcrypt.getSalt(10)
+    const salt = await bcrypt.genSalt(10)
 
     this.password = await bcrypt.hash(this.password, salt);
 });
 
+
 //Compare Passwords
-userSchema.methods.comparePassword = async function (userPassword){
+companySchema.methods.comparePassword = async function (userPassword){
     const isMatch = await bcrypt.compare(userPassword, this.password);
 
     return isMatch;
 };
 
 //JWT TOKEN
-userSchema.methods.createToken = async function (){
+companySchema.methods.createJWT = async function (){
     return JWT.sign(
         {userId: this._id},
         process.env.JWT_SECRET_KEY, {

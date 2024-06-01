@@ -56,7 +56,7 @@ export const register = async(req, res, next) =>{
         
     } catch (error) {
         console.log(error);
-        res.status(404).json({message: eroor.message});
+        res.status(404).json({message: error.message});
         
     }
 };
@@ -76,7 +76,7 @@ export const signIn = async(req, res, next) =>{
         }
 
         //find user by email
-        const user = await user.findOne({ email }. select("+password"));
+        const user = await Users.findOne({ email }).select("+password");
 
         if(!user){
             next("Invalid email or password");
@@ -107,7 +107,7 @@ export const signIn = async(req, res, next) =>{
         
     } catch (error) {
         console.log(error);
-        res.status(404).json({message: eroor.message});
+        res.status(404).json({message: error.message});
         
     }
 
