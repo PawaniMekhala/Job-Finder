@@ -1,9 +1,9 @@
 import mongoose, {Schema} from 'mongoose';
 import validator from 'validator';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import JWT from 'jsonwebtoken';
 
-const companySchema = new mongoose.Schema({
+const companySchema = new Schema({
     name: {
         type: String,
         required: [true, "Company Name is required"],
@@ -33,7 +33,7 @@ const companySchema = new mongoose.Schema({
         type: String,
     },
     jobPosts:
-         [{type:Schema.Type.ObjectId, ref: "Jobs"}]
+         [{type: Schema.Types.ObjectId, ref: "Jobs"}]
     
     
 });
