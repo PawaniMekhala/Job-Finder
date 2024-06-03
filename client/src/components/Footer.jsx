@@ -27,7 +27,7 @@ const Footer = () => {
       <div className='bg-[#1d4ed8] '>
         <div className='container px-5 py-20 mx-auto '>
           <div className='w-full flex flex-wrap gap-10 justify-between -mb-10 -px-4'>
-          {footerLinks.map(({ id, title, links }) => (
+            {footerLinks.map(({ id, title, links }) => (
               <div className='w-auto px-4 ' key={id + title}>
                 <h2 className='font-medium text-white tracking-widest text-sm mb-3'>
                   {title}
@@ -47,12 +47,11 @@ const Footer = () => {
               </div>
             ))}
           </div>
-        
         </div>
 
         <div className=''>
           <p className='container px-5 mx-auto text-white mt-2 '>
-            Subscribe Us
+            Subscribe to our Newsletter
           </p>
 
           <div className='container mx-auto px-5 pt-6 pb-8 flex flex-wrap items-center justify-between '>
@@ -94,7 +93,7 @@ const Footer = () => {
             <p className='text-gray-300 text-sm text-center sm:text-left'>
               &copy; 2024 Job Finder —
               <a
-                href='https://www.indeed.com/'
+                href='https://youtube.com/@CodeWaveWithAsante'
                 className='text-[#1199e7] ml-1'
                 target='_blank'
                 rel='noopener noreferrer'
@@ -110,7 +109,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
