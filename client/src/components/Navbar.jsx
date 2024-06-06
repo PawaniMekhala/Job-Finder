@@ -116,7 +116,7 @@ const Navbar = () => {
 
           <ul className='hidden lg:flex gap-10 text-base'>
             <li>
-              <Link to='/find-jobs'>Find Job</Link>
+              <Link to='/'>Find Job</Link>
             </li>
             <li>
               <Link to='/companies'>Companies</Link>

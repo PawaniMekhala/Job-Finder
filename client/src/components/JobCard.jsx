@@ -1,104 +1,47 @@
-import React from "react";
-import { AiOutlineSearch, AiOutlineCloseCircle } from "react-icons/ai";
-import { CiLocationOn } from "react-icons/ci";
-import CustomButton from "./CustomButton";
-import { popularSearch } from "../utils/data";
-import { HeroImage } from "../assets";
+import { GoLocation } from "react-icons/go";
+import moment from "moment";
+import { Link } from "react-router-dom";
 
-const SearchInput = ({ placeholder, icon, value, setValue, styles }) => {
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  const clearInput = () => setValue("");
-
+const JobCard = ({ job }) => {
   return (
-    <div className={`flex w-full md:w-1/3 items-center ${styles}`}>
-      {icon}
-
-      <input
-        value={value}
-        onChange={(e) => handleChange(e)}
-        type='text'
-        className='w-full md:w-64 p-2 outline-none bg-transparent text-base'
-        placeholder={placeholder}
-      />
-
-      <AiOutlineCloseCircle
-        className='hidden md:flex text-gray-600 text-xl cursor-pointer'
-        onClick={clearInput}
-      />
-    </div>
-  );
-};
-
-const Header = ({
-  title,
-  type,
-  handleClick,
-  searchQuery,
-  setSearchQuery,
-  location,
-  setLocation,
-}) => {
-  return (
-    <div className='bg-[#f7fdfd]'>
+    <Link to={`/job-detail/${job?.id}`}>
       <div
-        className={`container mx-auto px-5 ${
-          type ? "h-[500px]" : "h-[350px]"
-        } flex items-center relative`}
+        className='w-full md:w-[16rem] 2xl:w-[18rem] h-[16rem] md:h-[18rem] bg-white flex flex-col justify-between shadow-lg 
+                rounded-md px-3 py-5 '
       >
-        <div className='w-full z-10'>
-          <div className='mb-8'>
-            <p className='text-slate-700 font-bold text-4xl'>{title}</p>
+        <div className='flex gap-3'>
+          <img
+            src={job?.company?.profileUrl}
+            alt={job?.company?.name}
+            className='w-14 h-14'
+          />
+
+          <div className=''>
+            <p className='text-lg font-semibold truncate'>{job?.jobTitle}</p>
+            <span className='flex gap-2 items-center'>
+              <GoLocation className='text-slate-900 text-sm' />
+              {job?.location}
+            </span>
           </div>
-
-          <div className='w-full flex items-center justify-around bg-white px-2 md:px-5 py-2.5 md:py-6 shadow-2xl rounded-full'>
-            <SearchInput
-              placeholder='Job Title or Keywords'
-              icon={<AiOutlineSearch className='text-gray-600 text-xl' />}
-              value={searchQuery}
-              setValue={setSearchQuery}
-            />
-            <SearchInput
-              placeholder='Add Country or City'
-              icon={<CiLocationOn className='text-gray-600 text-xl' />}
-              value={location}
-              setValue={setLocation}
-              styles={"hidden md:flex"}
-            />
-
-            <div>
-              <CustomButton
-                onClick={handleClick}
-                title='Search'
-                containerStyles={
-                  "text-white py-2 md:py3 px-3 md:px-10 focus:outline-none bg-blue-600 rounded-full md:rounded-md text-sm md:text-base"
-                }
-              />
-            </div>
-          </div>
-
-          {type && (
-            <div className='w-full lg:1/2 flex flex-wrap gap-3 md:gap-6 py-10 md:py-14'>
-              {popularSearch.map((search, index) => (
-                <span
-                  key={index}
-                  className='bg-[#1d4fd826] text-[#1d4ed8] py-1 px-2 rounded-full text-sm md:text-base'
-                >
-                  {search}
-                </span>
-              ))}
-            </div>
-          )}
         </div>
 
-        <div className='w-1/3 h-full absolute top-24 md:-top-6 lg:-top-14 right-16 2xl:right-[18rem]'>
-          <img src={HeroImage} className='object-contain' />
+        <div className='py-3'>
+          <p className='text-sm'>
+            {job?.detail[0]?.desc?.slice(0, 150) + "..."}
+          </p>
+        </div>
+
+        <div className='flex items-center justify-between'>
+          <p className='bg-[#1d4fd826] text-[#1d4fd8] py-0.5 px-1.5 rounded font-semibold text-sm'>
+            {job?.jobType}
+          </p>
+          <span className='text-gray-500 text-sm'>
+            {moment(job?.createdAt).fromNow()}
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
-export default Header;
+export default JobCard;

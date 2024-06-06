@@ -11,16 +11,15 @@ import CompanyCard from "./CompanyCard";
 import JobTypes from "./JobTypes";
 
 export {
-    Navbar, 
-    Footer, 
-    CustomButton, 
-    TextInput, 
-    SignUp, 
-    Header, 
-    ListBox, 
-    JobCard,
-    Loading,
-    CompanyCard,
-    JobTypes,
-    
+  Navbar,
+  Footer,
+  CustomButton,
+  TextInput,
+  SignUp,
+  Header,
+  ListBox,
+  JobCard,
+  Loading,
+  CompanyCard,
+  JobTypes,
 };
