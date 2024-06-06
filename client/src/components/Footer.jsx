@@ -93,7 +93,7 @@ const Footer = () => {
             <p className='text-gray-300 text-sm text-center sm:text-left'>
               &copy; 2024 Job Finder —
               <a
-                href='https://youtube.com/@CodeWaveWithAsante'
+                href='https://www.indeed.com'
                 className='text-[#1199e7] ml-1'
                 target='_blank'
                 rel='noopener noreferrer'
